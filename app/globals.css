@@ -1,791 +1,349 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 15, 15, 35;
-  --background-end-rgb: 26, 26, 46;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 15, 15, 35;
-    --background-end-rgb: 26, 26, 46;
-  }
-}
-
-@layer base {
-  :root {
-    --background: 210 11% 9%;
-    --foreground: 0 0% 98%;
-    --card: 210 11% 9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 210 11% 9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 24 100% 50%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 210 11% 15%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 210 11% 15%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 210 11% 15%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 210 11% 20%;
-    --input: 210 11% 20%;
-    --ring: 24 100% 50%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-    
-    /* Modern Dark Theme Colors */
-    --bg-primary: #0F0F23;
-    --bg-secondary: #1A1A2E;
-    --bg-tertiary: #16213E;
-  }
-}
-
-/* CRITICAL: Hide all scrollbars globally */
+/* Reset e Base Styles */
 * {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-*::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@layer base {
-  html, body {
-    overflow-x: hidden;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    max-width: 100vw;
-    width: 100%;
-    /* Ensure smooth scrolling and proper scroll behavior */
-    scroll-behavior: smooth;
+body {
+  margin: 0;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Utility Classes per BELANCE */
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.bg-gradient-to-br {
+  background: linear-gradient(to bottom right, #eff6ff, #ffffff, #faf5ff);
+}
+
+.bg-white\/80 {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+}
+
+.shadow-sm {
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.sticky {
+  position: sticky;
+}
+
+.top-0 {
+  top: 0;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
+.max-w-7xl {
+  max-width: 80rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.h-16 {
+  height: 4rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.from-blue-600 {
+  --tw-gradient-from: #2563eb;
+  --tw-gradient-to: rgb(37 99 235 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-purple-600 {
+  --tw-gradient-to: #9333ea;
+}
+
+.bg-clip-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.text-transparent {
+  color: transparent;
+}
+
+.text-white {
+  color: rgb(255 255 255);
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.hover\:shadow-lg:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:scale-105:hover {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.text-gray-900 {
+  color: rgb(17 24 39);
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-gray-600 {
+  color: rgb(75 85 99);
+}
+
+.max-w-4xl {
+  max-width: 56rem;
+}
+
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
+.leading-relaxed {
+  line-height: 1.625;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.text-blue-600 {
+  color: rgb(37 99 235);
+}
+
+.grid {
+  display: grid;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+.mb-20 {
+  margin-bottom: 5rem;
+}
+
+/* Media queries para responsive */
+@media (min-width: 768px) {
+  .md\:text-7xl {
+    font-size: 4.5rem;
+    line-height: 1;
   }
   
-  body {
-    @apply bg-[#0F0F23] text-foreground;
-    background: linear-gradient(135deg, #0F0F23 0%, #1A1A2E 50%, #16213E 100%);
-    background-attachment: fixed;
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-/* Force scroll position reset */
-.scroll-reset {
-  scroll-behavior: auto !important;
-}
-
-/* Ensure all page containers start from top */
-.page-container {
-  min-height: 100vh;
-  position: relative;
-  top: 0;
-  left: 0;
-}
-
-/* Remove any orange sidebar elements */
-.orange-sidebar, 
-.progress-indicator, 
-.scroll-indicator,
-.sidebar-element {
-  display: none !important;
-}
-
-/* Main container - no scrollbars */
-.main-container {
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  position: relative;
-  top: 0;
-}
-
-.main-container::-webkit-scrollbar {
-  display: none;
-}
-
-/* ✅ UPDATED: Dashboard container - removed padding: 0 to allow lateral spacing */
-.dashboard-container {
-  width: 100%;
-  max-width: 640px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  position: relative;
-  top: 0;
-}
-
-/* Prevent horizontal overflow anywhere */
-.dashboard-container,
-.dashboard-container * {
-  overflow-x: hidden;
-  max-width: 100%;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-/* Modal fixes */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(8px);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  animation: fadeIn 0.3s ease-out;
-}
-
-.modal-content {
-  width: 100%;
-  max-width: 400px;
-  max-height: 80vh;
-  background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
-  border-radius: 20px;
-  padding: 24px;
-  position: relative;
-  overflow-y: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  animation: slideUp 0.3s ease-out;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.modal-content::-webkit-scrollbar {
-  display: none;
-}
-
-.modal-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  color: white;
-  font-size: 18px;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.modal-close:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* Life Balance Grid Layout */
-.life-balance-section {
-  padding: 0 16px;
-  margin-bottom: 24px;
-}
-
-.life-balance-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  width: 100%;
-}
-
-.balance-card {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
-  padding: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  min-height: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  touch-action: manipulation;
-}
-
-.balance-card:hover {
-  background: rgba(255, 255, 255, 0.12);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.balance-card:active {
-  transform: scale(0.98);
-}
-
-.balance-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.balance-emoji {
-  font-size: 16px;
-}
-
-.balance-name {
-  font-size: 13px;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-.balance-score {
-  font-size: 20px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 4px;
-}
-
-.balance-trend {
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.trend-up { color: #22c55e; }
-.trend-down { color: #ef4444; }
-.trend-stable { color: #6b7280; }
-
-/* Section Organization */
-.section {
-  width: 100%;
-  padding: 0 16px;
-  margin-bottom: 20px;
-  box-sizing: border-box;
-}
-
-.section-title {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 16px;
-  color: #ffffff;
-}
-
-.section-subtitle {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 12px;
-}
-
-/* Simplified Recommendations */
-.recommendations-section {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 20px;
-  margin-top: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.recommendation-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 16px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.08);
-  margin-bottom: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.recommendation-item:last-child {
-  margin-bottom: 0;
-}
-
-.priority-badge {
-  padding: 4px 8px;
-  border-radius: 8px;
-  font-size: 11px;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.priority-high { 
-  background: #ef4444; 
-  color: white;
-}
-
-.priority-medium { 
-  background: #f59e0b; 
-  color: white;
-}
-
-.priority-low { 
-  background: #10b981; 
-  color: white;
-}
-
-.recommendation-content {
-  flex: 1;
-}
-
-.recommendation-title {
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 4px;
-}
-
-.recommendation-description {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 8px;
-}
-
-.recommendation-action {
+/* Buttons */
+button {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 6px 12px;
-  background: rgba(255, 149, 0, 0.2);
-  border: 1px solid rgba(255, 149, 0, 0.3);
-  border-radius: 8px;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 500;
-  text-decoration: none;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  font-size: 1.125rem;
+  font-weight: 600;
   transition: all 0.3s ease;
+  border: none;
   cursor: pointer;
-  min-height: 44px;
-  min-width: 44px;
-  touch-action: manipulation;
 }
 
-.recommendation-action:hover {
-  background: rgba(255, 149, 0, 0.3);
-  border-color: rgba(255, 149, 0, 0.5);
-  transform: translateY(-1px);
+.btn-primary {
+  background: linear-gradient(to right, #2563eb, #9333ea);
+  color: white;
 }
 
-/* Custom slider styling for onboarding */
-.slider::-webkit-slider-thumb {
-  appearance: none;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background: #8B5CF6;
-  cursor: pointer;
-  border: 2px solid #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+.btn-primary:hover {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  transform: scale(1.05);
 }
 
-.slider::-moz-range-thumb {
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background: #8B5CF6;
-  cursor: pointer;
-  border: 2px solid #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+.btn-secondary {
+  border: 2px solid #d1d5db;
+  color: #374151;
+  background: white;
 }
 
-/* Mobile-first responsive design - Ottimizzato per iPhone 16 */
-@media (max-width: 430px) {
-  .life-balance-grid {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  .balance-card {
-    padding: 12px;
-    min-height: 60px;
-  }
-
-  .modal-content {
-    max-width: 95vw;
-    max-height: 90vh;
-    padding: 16px;
-    margin: 0 8px;
-  }
-
-  .balance-score {
-    font-size: 18px;
-  }
-
-  .balance-name {
-    font-size: 12px;
-  }
-
-  .section {
-    padding: 0 12px;
-  }
-
-  .recommendations-section {
-    padding: 16px;
-  }
-
-  .recommendation-item {
-    padding: 12px;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .priority-badge {
-    align-self: flex-start;
-  }
+.btn-secondary:hover {
+  background: #f9fafb;
 }
 
-@media (max-width: 480px) {
-  .life-balance-section {
-    padding: 0 12px;
-  }
-
-  .balance-card {
-    padding: 10px;
-  }
-
-  .modal-content {
-    padding: 16px;
-  }
+/* Cards */
+.card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgb(229 231 235);
 }
 
-/* Progress chart responsive */
-.progress-chart {
-  margin: 20px 0;
+.card:hover {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
-.chart-container {
-  width: 100%;
-  height: 200px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 16px;
+/* Icons containers */
+.icon-container {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.875rem;
 }
 
-.chart-svg {
-  width: 100%;
-  height: 100%;
-  max-width: 300px;
+.icon-blue {
+  background: linear-gradient(to right, #3b82f6, #2563eb);
 }
 
-/* Touch-friendly interactions */
-.balance-card,
-.modal-close,
-.recommendation-action {
-  min-height: 44px;
-  min-width: 44px;
-  touch-action: manipulation;
+.icon-purple {
+  background: linear-gradient(to right, #8b5cf6, #7c3aed);
 }
 
-/* Smooth animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.icon-green {
+  background: linear-gradient(to right, #10b981, #059669);
 }
 
-@keyframes slideUp {
-  from { 
-    opacity: 0; 
-    transform: translateY(20px); 
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0); 
-  }
+/* Footer */
+footer {
+  background: #111827;
+  color: white;
+  padding: 3rem 0;
+  margin-top: 5rem;
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.8s ease-out;
+.text-gray-400 {
+  color: rgb(156 163 175);
 }
 
-.animate-slide-up {
-  animation: slideUp 0.6s ease-out;
+.text-blue-400 {
+  color: rgb(96 165 250);
 }
 
-/* Clean container styles */
-.container-responsive {
-  width: 100%;
-  max-width: 100vw;
-  margin: 0 auto;
-  padding: 0 1rem;
-  overflow-x: hidden;
+.hover\:text-blue-300:hover {
+  color: rgb(147 197 253);
 }
 
+/* Responsive utilities */
 @media (min-width: 640px) {
-  .container-responsive {
-    max-width: 640px;
+  .sm\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
-}
-
-@media (min-width: 768px) {
-  .container-responsive {
-    max-width: 768px;
+  
+  .sm\:flex-row {
+    flex-direction: row;
   }
 }
 
 @media (min-width: 1024px) {
-  .container-responsive {
-    max-width: 1024px;
-  }
-}
-
-/* Bottom navigation safe area */
-@supports (padding-bottom: env(safe-area-inset-bottom)) {
-  .bottom-nav-safe {
-    padding-bottom: calc(env(safe-area-inset-bottom) + 1rem);
-  }
-}
-
-/* Notification bell specific styling */
-.notification-bell {
-  transition: all 0.3s ease;
-}
-
-.notification-bell:hover {
-  transform: scale(1.05);
-}
-
-/* Glass morphism effects */
-.glass {
-  background: rgba(26, 26, 46, 0.3);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.glass-dark {
-  background: rgba(15, 15, 35, 0.5);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Button styles */
-.btn-gradient-primary {
-  background: linear-gradient(135deg, #FF9500 0%, #FF6B9D 100%);
-  border: none;
-  color: white;
-  transition: all 0.3s ease;
-}
-
-.btn-gradient-primary:hover {
-  background: linear-gradient(135deg, #FF9500 0%, #FF6B9D 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(255, 149, 0, 0.3);
-}
-
-/* Legacy styles for compatibility */
-.balance-item {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
-  padding: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.balance-item:hover {
-  background: rgba(255, 255, 255, 0.12);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.balance-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.balance-icon {
-  font-size: 20px;
-  line-height: 1;
-}
-
-.balance-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: #ffffff;
-  flex: 1;
-}
-
-.balance-score {
-  font-size: 18px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 4px;
-}
-
-.balance-trend {
-  font-size: 14px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* Nuove utilità per il sistema di navigazione migliorato */
-@layer utilities {
-  .h-safe-area-inset-bottom {
-    height: env(safe-area-inset-bottom, 0px);
-  }
-  
-  .pb-safe {
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-}
-
-/* Animazioni custom per micro-interazioni */
-@keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 5px #FF9500;
-  }
-  50% {
-    box-shadow: 0 0 20px #FF9500, 0 0 30px #FF9500;
-  }
-}
-
-.animate-glow {
-  animation: glow 2s ease-in-out infinite;
-}
-
-/* Animazioni per la navigazione */
-@keyframes bounce-in {
-  0% {
-    transform: scale(0.3);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  70% {
-    transform: scale(0.9);
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.animate-bounce-in {
-  animation: bounce-in 0.6s ease-out;
-}
-
-/* Effetti hover migliorati */
-.nav-item-hover {
-  position: relative;
-  overflow: hidden;
-}
-
-.nav-item-hover::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 149, 0, 0.2), transparent);
-  transition: left 0.5s;
-}
-
-.nav-item-hover:hover::before {
-  left: 100%;
-}
-
-/* Stili per il backdrop blur migliorato */
-.backdrop-blur-xl {
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-}
-
-/* Gradiente per gli elementi attivi */
-.active-gradient {
-  background: linear-gradient(135deg, #FF9500 0%, #FF6B9D 100%);
-}
-
-/* Ombra personalizzata per BELANCE */
-.shadow-belance {
-  box-shadow: 0 4px 20px rgba(255, 149, 0, 0.15);
-}
-
-.shadow-belance-lg {
-  box-shadow: 0 10px 40px rgba(255, 149, 0, 0.2);
-}
-
-/* Transizioni fluide per tutti gli elementi interattivi */
-.transition-belance {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Stili per i badge di notifica */
-.notification-badge {
-  background: linear-gradient(135deg, #FF9500 0%, #FF6B9D 100%);
-  box-shadow: 0 2px 8px rgba(255, 149, 0, 0.3);
-}
-
-/* Effetto pulsante per elementi importanti */
-@keyframes pulse-belance {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(255, 149, 0, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(255, 149, 0, 0);
-  }
-}
-
-.animate-pulse-belance {
-  animation: pulse-belance 2s infinite;
-}
-
-/* Ottimizzazioni specifiche per iPhone 16 */
-@media screen and (max-width: 430px) and (max-height: 932px) {
-  /* iPhone 16 Pro Max: 430x932 */
-  .landing-page-container {
-    min-height: 100vh;
-    min-height: 100dvh; /* Dynamic viewport height */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: env(safe-area-inset-top, 20px) 16px env(safe-area-inset-bottom, 20px);
-  }
-  
-  .landing-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
-  }
-}
-
-@media screen and (max-width: 393px) and (max-height: 852px) {
-  /* iPhone 16 Pro: 393x852 */
-  .landing-page-container {
-    padding: env(safe-area-inset-top, 16px) 12px env(safe-area-inset-bottom, 16px);
-  }
-}
-
-@media screen and (max-width: 375px) and (max-height: 812px) {
-  /* iPhone 16: 375x812 */
-  .landing-page-container {
-    padding: env(safe-area-inset-top, 12px) 12px env(safe-area-inset-bottom, 12px);
-  }
-  
-  .landing-content {
-    gap: 0.75rem;
+  .lg\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
