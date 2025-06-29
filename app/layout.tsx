@@ -1,49 +1,28 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { ScrollToTop } from '@/components/layout/scroll-to-top';
+import type { Metadata } from 'next'
+import './globals.css'
 
 export const metadata: Metadata = {
   title: 'BELANCE - AI Life Balance Council',
-  description: 'Transform urban loneliness into personal growth with 6 specialized AI video companions. Your circle of trust for mental health, relationships, career, health, finance, and creativity.',
-  keywords: 'AI companions, mental health, life balance, personal development, video chat, life coaching',
+  description: 'Transform urban loneliness into personal growth through your AI companion council. Get expert guidance available 24/7 for peak performance.',
+  keywords: 'AI companion, life balance, personal growth, mental health, productivity',
   authors: [{ name: 'BELANCE Team' }],
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no',
-  metadataBase: new URL('https://belance-ai.netlify.app'),
-  openGraph: {
-    title: 'BELANCE - AI Life Balance Council',
-    description: 'Transform urban loneliness into personal growth with 6 specialized AI video companions.',
-    type: 'website',
-    locale: 'en_US',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'BELANCE - AI Life Balance Council',
-    description: 'Transform urban loneliness into personal growth with 6 specialized AI video companions.',
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+  viewport: 'width=device-width, initial-scale=1',
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en">
       <head>
-        <link 
-          rel="stylesheet" 
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" 
-        />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="theme-color" content="#4F46E5" />
       </head>
-      <body className="font-sans min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
-        <ScrollToTop />
+      <body className="antialiased">
         {children}
       </body>
     </html>
-  );
+  )
 }
