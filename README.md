@@ -2,132 +2,129 @@
 
 Your personal AI support network with 6 specialized companions designed to transform urban loneliness into personal growth.
 
-## Features
+## 🚀 Live Demo
+
+Visit the live demo: [https://belance-ai.netlify.app](https://belance-ai.netlify.app)
+
+## ✨ Features
 
 - **6 AI Companions**: SAGE, MAYA, ALEX, VITA, FELIX, and LUNA - each specialized in different life areas
-- **Video Conversations**: Face-to-face interactions with AI avatars powered by Tavus
-- **Life Wheel Assessment**: Track your balance across 6 key life areas
-- **Proactive Support**: Calendar integration for timely interventions
-- **Cross-Companion Memory**: Your companions remember and share relevant context
+- **Interactive Life Wheel**: Track your balance across 6 key life areas
+- **Video Call Interface**: Simulated AI video conversations (demo mode)
+- **Responsive Design**: Optimized for mobile and desktop
+- **Progressive Web App**: Works offline and can be installed
 
-## Tech Stack
+## 🛠 Tech Stack
 
-- **Frontend**: Next.js 13, React, TypeScript, Tailwind CSS
-- **UI Components**: shadcn/ui, Radix UI
-- **Video AI**: Tavus API for realistic avatar conversations
-- **Database**: Supabase (PostgreSQL)
-- **Authentication**: Supabase Auth
-- **Deployment**: Netlify
+- **Frontend**: Next.js 14, React 18, TypeScript
+- **Styling**: Tailwind CSS, shadcn/ui components
+- **Icons**: Lucide React
+- **Deployment**: Netlify (static export)
+- **Build Tool**: Next.js with static export
 
-## Tavus Integration
+## 🏃‍♂️ Quick Start
 
-BELANCE uses Tavus to create realistic AI avatar conversations. To enable Tavus:
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd belance-ai-platform
+   ```
 
-1. Sign up for a Tavus account at [tavus.io](https://tavus.io)
-2. Get your API key from the Tavus dashboard
-3. Copy `.env.example` to `.env.local` and add your Tavus credentials:
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-```bash
-NEXT_PUBLIC_TAVUS_API_KEY=your_tavus_api_key_here
-NEXT_PUBLIC_TAVUS_BASE_URL=https://api.tavus.io/v1
-```
+3. **Run development server**
+   ```bash
+   npm run dev
+   ```
 
-### Tavus Features Used
+4. **Open in browser**
+   ```
+   http://localhost:3000
+   ```
 
-- **Avatar Creation**: Custom AI avatars for each companion
-- **Real-time Conversations**: WebSocket-based live video interactions
-- **Voice Customization**: Different voice settings per companion
-- **Background Settings**: Studio backgrounds for professional appearance
+## 📦 Build & Deploy
 
-## Getting Started
-
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Set up environment variables (copy `.env.example` to `.env.local`)
-4. Run the development server: `npm run dev`
-5. Open [http://localhost:3000](http://localhost:3000)
-
-## Companion Profiles
-
-### SAGE (Free Tier)
-- **Specialty**: Mental Health & Personal Development
-- **Voice**: Calm, deep tone
-- **Approach**: Mindful, philosophical
-
-### MAYA (Premium)
-- **Specialty**: Relationships & Love
-- **Voice**: Warm, caring tone
-- **Approach**: Heart-centered, empathetic
-
-### ALEX (Premium)
-- **Specialty**: Career & Professional Growth
-- **Voice**: Confident, encouraging tone
-- **Approach**: Goal-focused, strategic
-
-### VITA (Premium Plus)
-- **Specialty**: Health & Wellness
-- **Voice**: Energetic, positive tone
-- **Approach**: Holistic wellness, motivational
-
-### FELIX (Premium Plus)
-- **Specialty**: Finance & Life Organization
-- **Voice**: Professional, reassuring tone
-- **Approach**: Data-driven, systematic
-
-### LUNA (Premium Plus)
-- **Specialty**: Creativity & Social Life
-- **Voice**: Playful, inspiring tone
-- **Approach**: Creative exploration, spontaneous
-
-## Video Call Features
-
-- **HD/4K Video Quality**: Based on subscription tier
-- **Real-time Interaction**: Live conversation with AI avatars
-- **Voice Controls**: Mute/unmute, camera toggle
-- **Captions**: Real-time transcription
-- **Mirror Mode**: Practice conversations
-- **Background Customization**: Professional studio settings
-
-## Development
-
-### File Structure
-
-```
-components/
-├── video/
-│   ├── video-call.tsx          # Main video call component
-│   └── tavus-video-call.tsx    # Tavus-powered video calls
-├── onboarding/
-│   └── comprehensive-onboarding.tsx
-└── ...
-
-lib/
-├── tavus.ts                    # Tavus API integration
-├── types.ts                    # TypeScript definitions
-└── ...
-```
-
-### Environment Variables
-
-```bash
-# Tavus Configuration
-NEXT_PUBLIC_TAVUS_API_KEY=your_api_key
-NEXT_PUBLIC_TAVUS_BASE_URL=https://api.tavus.io/v1
-
-# Supabase Configuration
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-```
-
-## Deployment
-
-The app is configured for deployment on Netlify with static export:
-
+### Local Build
 ```bash
 npm run build
 ```
 
-## Contributing
+### Deploy to Netlify
+1. Connect your repository to Netlify
+2. Set build command: `npm run build`
+3. Set publish directory: `out`
+4. Deploy automatically on push
+
+## 🎯 Companion Profiles
+
+### SAGE (Free Tier)
+- **Specialty**: Mental Health & Personal Development
+- **Approach**: Mindful, philosophical guidance
+- **Available**: Always accessible
+
+### MAYA (Premium)
+- **Specialty**: Relationships & Love
+- **Approach**: Heart-centered, empathetic support
+
+### ALEX (Premium)
+- **Specialty**: Career & Professional Growth
+- **Approach**: Goal-focused, strategic coaching
+
+### VITA (Premium Plus)
+- **Specialty**: Health & Wellness
+- **Approach**: Holistic wellness, motivational
+
+### FELIX (Premium Plus)
+- **Specialty**: Finance & Life Organization
+- **Approach**: Data-driven, systematic planning
+
+### LUNA (Premium Plus)
+- **Specialty**: Creativity & Social Life
+- **Approach**: Creative exploration, spontaneous fun
+
+## 🎬 Demo Features
+
+- **Onboarding Flow**: Complete life assessment and companion matching
+- **Life Wheel Visualization**: Interactive progress tracking
+- **Video Call Simulation**: Demo AI conversation interface
+- **Subscription Tiers**: Free, Premium, and Premium Plus options
+- **Responsive Design**: Mobile-first, works on all devices
+
+## 🔧 Configuration
+
+### Environment Variables (Optional)
+```bash
+# For future Tavus integration
+NEXT_PUBLIC_TAVUS_API_KEY=your_api_key
+NEXT_PUBLIC_TAVUS_BASE_URL=https://tavusapi.com/v2
+
+# For future Supabase integration
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_key
+```
+
+## 📱 Mobile Optimization
+
+- Touch-friendly interface (44px minimum touch targets)
+- Responsive design for all screen sizes
+- Optimized for iPhone and Android devices
+- Progressive Web App capabilities
+
+## 🚀 Performance
+
+- Static site generation for fast loading
+- Optimized images and assets
+- Minimal JavaScript bundle
+- CDN-ready deployment
+
+## 📄 License
+
+MIT License - see LICENSE file for details.
+
+## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -135,10 +132,10 @@ npm run build
 4. Test thoroughly
 5. Submit a pull request
 
-## License
+## 📞 Support
 
-MIT License - see LICENSE file for details.
+For questions or support, please open an issue in the repository.
 
-## Support
+---
 
-For support with Tavus integration or general questions, please open an issue or contact the development team.
+**Built for the World's Largest Hackathon** 🏆

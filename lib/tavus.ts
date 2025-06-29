@@ -62,8 +62,7 @@ class TavusAPI {
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Tavus API error: ${response.status} ${response.statusText}`);
+        return [];
       }
 
       const data = await response.json();
@@ -114,11 +113,7 @@ class TavusAPI {
         },
       });
 
-      if (response.ok) {
-        return true;
-      } else {
-        return false;
-      }
+      return response.ok;
     } catch (error) {
       return false;
     }
@@ -155,7 +150,7 @@ let tavusInstance: TavusAPI | null = null;
 export const getTavusAPI = (): TavusAPI => {
   if (!tavusInstance) {
     const config: TavusConfig = {
-      apiKey: process.env.NEXT_PUBLIC_TAVUS_API_KEY || '85dd7fbe21be401ca4b5a9efa90bb26f',
+      apiKey: process.env.NEXT_PUBLIC_TAVUS_API_KEY || 'demo_key',
       baseUrl: process.env.NEXT_PUBLIC_TAVUS_BASE_URL || 'https://tavusapi.com/v2'
     };
     
@@ -167,16 +162,15 @@ export const getTavusAPI = (): TavusAPI => {
 
 export const getCompanionAvatarId = (companionName: string): string => {
   const avatarMapping: Record<string, string> = {
-    'SAGE': process.env.NEXT_PUBLIC_SAGE_AVATAR_ID || 'p666fe2bf389',
-    'MAYA': 'maya-replica-id',
-    'ALEX': 'alex-replica-id',
-    'VITA': 'vita-replica-id',
-    'FELIX': 'felix-replica-id',
-    'LUNA': 'luna-replica-id'
+    'SAGE': process.env.NEXT_PUBLIC_SAGE_AVATAR_ID || 'demo_sage_id',
+    'MAYA': 'demo_maya_id',
+    'ALEX': 'demo_alex_id',
+    'VITA': 'demo_vita_id',
+    'FELIX': 'demo_felix_id',
+    'LUNA': 'demo_luna_id'
   };
   
-  const avatarId = avatarMapping[companionName] || 'p666fe2bf389';
-  return avatarId;
+  return avatarMapping[companionName] || 'demo_sage_id';
 };
 
 export const getVoiceSettings = (companionName: string) => {
@@ -189,6 +183,5 @@ export const getVoiceSettings = (companionName: string) => {
     'LUNA': { stability: 0.5, similarity_boost: 0.8, style: 0.9 }
   };
   
-  const settings = voiceMapping[companionName] || { stability: 0.7, similarity_boost: 0.7, style: 0.5 };
-  return settings;
+  return voiceMapping[companionName] || { stability: 0.7, similarity_boost: 0.7, style: 0.5 };
 };
